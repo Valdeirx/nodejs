@@ -1,10 +1,19 @@
 const express = require('express');
-const path = require('path');
-const router = express.Router();
+const app = express();
+app.use(express.json());
 
-// Serve the index.html file for the root route
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/index.html'));
+let mensagemAtual = "";
+
+app.post('/mensagem', (req, res) => {
+  mensagemAtual = req.body.mensagem;
+  res.json({ status: 'Mensagem atualizada com sucesso!' });
 });
 
-module.exports = router;
+app.get('/mensagem', (req, res) => {
+  res.json({ mensagem: mensagemAtual });
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
+});
