@@ -1,10 +1,31 @@
+// routes/index.js
 const express = require('express');
-const path = require('path');
 const router = express.Router();
 
-// Serve the index.html file for the root route
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/index.html'));
+let mensagem = ''; // Variável global simples
+
+router.post('/mensagem', (req, res) => {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk;
+  });
+
+  req.on('end', () => {
+    try {
+      const data = JSON.parse(body);
+      if (!data.mensagem) {
+        return res.status(400).json({ erro: 'mensagem é obrigatória' });
+      }
+      mensagem = data.mensagem;
+      res.json({ sucesso: true });
+    } catch (err) {
+      res.status(400).json({ erro: 'JSON inválido' });
+    }
+  });
+});
+
+router.get('/mensagem', (req, res) => {
+  res.json({ mensagem });
 });
 
 module.exports = router;
