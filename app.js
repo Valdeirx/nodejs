@@ -3,10 +3,7 @@ const path = require('path');
 const indexRouter = require('./routes/index');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
+module.exports = app;
 
 // Use the router for handling routes
 app.use('/', indexRouter);
