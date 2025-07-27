@@ -12,4 +12,9 @@ router.get('/mensagem', (req, res) => {
   res.json({ mensagem: mensagemAtual });
 });
 
+router.get('/setMensagem/:mensagem', (req, res) => {
+  mensagemAtual = mensagem;
+  res.json({ status: 'Mensagem atualizada com sucesso!' });
+});
+
 module.exports = router;
