@@ -13,6 +13,7 @@ router.get('/mensagem', (req, res) => {
 });
 
 router.get('/setMensagem/:mensagem', (req, res) => {
+  const { mensagem } = req.params;
   mensagemAtual = mensagem;
   res.json({ status: 'Mensagem atualizada com sucesso!' });
 });
