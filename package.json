@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A minimal Node.js web application.",
   "main": "app.js",
-  "author": "alphasec",
+  "author": "valdeirx",
   "license": "MIT",
   "dependencies": {
     "express": "^4.19.2"
