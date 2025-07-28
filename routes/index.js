@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-let mensagemAtual = "Agarudando...";
+let mensagemAtual = "Aguardando novas mensagens...";
 
 router.post('/mensagem', (req, res) => {
   mensagemAtual = req.body.mensagem;
